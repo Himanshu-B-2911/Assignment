@@ -1,0 +1,47 @@
+<!-- New Login -->
+<section class="login_page">
+  <div class="container">
+    <div class="row justify-content-center">
+      <div class="col-md-4">
+        <div class="login-form">
+          <h1 class="pb-3 text-center text-light">Login</h1>
+         
+          <form class="drivenForm form-signin" #loginForm = "ngForm" (ngSubmit)="loginForm.valid && onLogin(loginForm)" >
+              <div class="input-blog">
+                  <input type="text" 
+                         id="userName" 
+                         class="form-control" 
+                         placeholder="Username" 
+                         required 
+                         autofocus
+                         ngModel
+                         #userName = "ngModel"
+                         name="userName"/>
+                   <small class="text-light" *ngIf="loginForm.submitted && userName.errors?.required">
+                       Username is required.
+                   </small>
+              </div>
+              <div class="input-blog">
+                      <input type="password" 
+                      id="inputPassword" 
+                      class="form-control" 
+                      placeholder="Password" 
+                      required
+                      name="userPassword"
+                      ngModel
+                      #userPassword="ngModel">
+
+                      <small class="text-light" *ngIf="loginForm.submitted && userPassword.errors?.required">
+                          Password is required.
+                      </small>
+              </div>
+              <div class="input-blog">
+                  <button  class="btn btn-color px-3 py-1 w-100" type="submit" >Login</button>
+              </div>
+          </form> 
+          
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

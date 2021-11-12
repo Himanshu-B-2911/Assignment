@@ -1,0 +1,28 @@
+.login_page{
+    background: linear-gradient(to bottom right, #181818, #181f7c);
+    display: flex;
+  align-items: flex-end;
+  flex-direction: column;
+  justify-content: center;
+  height: 100vh;
+  }
+  .btn-color{
+    background-color: rgb(104, 145, 162);
+    border-color: #4a87c5 ;
+  }
+  .input-blog{
+    margin-bottom: 12px;
+  }
+  .input-blog input, button {
+    margin-bottom: 0px;
+    height: 46px;
+    color: #fff;
+  }
+  .form-control{
+    background-color: #fff0;
+  }
+  .form-control:focus{
+    background-color: #fff;
+    counter-reset: #000;
+    color: #000!important;
+  }

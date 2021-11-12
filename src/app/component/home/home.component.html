@@ -1,0 +1,83 @@
+<div class="page-area">
+  <h2 class="text-center">Product Inventory</h2>
+  <div class="container  ">
+    <div class="row">
+
+      <div class="col-md-9">
+        
+        <div class="table">
+          <thead class="thead-dark">
+            <tr style="background-color:white ; color:black;">
+              <th scope="col">ID</th>
+              <th scope="col">Name</th>
+              <th scope="col">SKU</th>
+              <th scope="col">Description</th>
+              <th scope="col">Price</th>
+              <th scope="col">Stock Level</th>
+              <th scope="col">Action</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor="let prod of product ; index as i" >
+              <td> {{i+1}} </td>
+              <td> {{prod.name}}</td>
+              <td> {{prod.sku}} </td> 
+              <td> {{prod.description}} </td>
+              <td> {{prod.price}}  </td>
+               <td> {{prod.stock_value}} </td>
+  
+              <td>
+                <button type="button" class="btn btn-light"   (click)="onEditProduct(prod)"><i class="fa fa-pencil" aria-hidden="true"></i></button> &nbsp;
+                
+                <button type="button" class="btn btn-light" (click)="onDeleteProduct(prod._id)"><i class="fa fa-trash" aria-hidden="true"></i></button>
+              </td>
+             
+            </tr>
+            
+          </tbody>
+        </div>
+      </div>
+      <div class="col-md-3">
+            <h3> <strong> Selected Product</strong>  </h3>
+              <form [formGroup]="proForm" (ngSubmit)="onProSubmit()"> 
+                  <div class="modal-body">
+                      <div class="form-group">
+                          <label> Name   </label>
+                          <input type="text" class="form-control" formControlName="name" placeholder="Enter name">
+                          <small *ngIf="!proForm.get('name').valid && proForm.get('name').touched" class="form-text text-danger">Please Enter Name.</small>
+                      </div>
+                      
+                      <div class="form-group">
+                          <label>SKU</label>
+                          <input type="text" class="form-control" formControlName="sku" placeholder="Enter sku">
+                          <small *ngIf="!proForm.get('sku').valid && proForm.get('sku').touched" class="form-text text-danger">Please Enter sku.</small>
+                      </div>
+                      
+                      <div class="form-group">
+                          <label>Description</label>
+                          <input type="text" class="form-control" formControlName="description" placeholder="Enter description">
+                          <small *ngIf="!proForm.get('description').valid && proForm.get('description').touched" class="form-text text-danger">Please Enter description.</small>
+                      </div>
+                      
+                      <div class="form-group">
+                          <label>Price</label>
+                          <input type="number" class="form-control" formControlName="price" placeholder="Enter price">
+                          <small *ngIf="!proForm.get('price').valid && proForm.get('price').touched" class="form-text text-danger">Please Enter Price.</small>
+                      </div>
+                      <div class="form-group">
+                        <label>Stock Level</label>
+                        <input type="text" class="form-control" formControlName="stock_value" placeholder="Enter stock level">
+                        <small *ngIf="!proForm.get('stock_value').valid && proForm.get('stock_value').touched" class="form-text text-danger">Please Enter Stock Level.</small>
+                    </div>
+                  </div>
+                  <div class="m-2">
+                    <button type="submit" class="btn btn-primary" [hidden]="editMode" [disabled]="!proForm.valid" id="btn"> Create</button>
+                    <button type="submit" class="btn btn-primary"  [hidden]="!editMode" id="btn"> Update</button>
+                    <button type="reset" class="btn btn-primary m-2" (click)="onClear()" id="btn">Clear</button>
+                   </div>
+              </form>
+               
+    
+    </div>
+  </div>
+</div>

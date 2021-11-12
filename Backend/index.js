@@ -1,0 +1,21 @@
+const express = require('express');
+const bodyParser = require('body-parser');
+const cors = require('cors');
+var path = require('path');
+const mongoose = require('./db.js');
+const routes = require('./routes/routes.js');
+const routesAuth  = require('./routes/auth.js');
+
+const app = express();
+app.use(bodyParser.json());
+
+// view engine setup
+app.set('views', path.join(__dirname, 'views'));
+app.set('view engine', 'ejs');
+
+app.use(cors({origine: 'http://localhost:4200' }))
+
+app.listen(3000, () => console.log('Server started at port: 3000'));
+
+app.use('/product', routes);
+app.use('/auth', routesAuth);
