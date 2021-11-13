@@ -14,6 +14,7 @@ import { LoginComponent } from './authentication/login/login.component';
 import { LayoutComponent } from './component/layout/layout.component';
 import { NotfoundComponent } from './component/notfound/notfound.component';
 import { AuthenticationService } from './authentication/authentication.service';
+import { LocationStrategy, HashLocationStrategy } from '@angular/common';
  
  
 
@@ -34,7 +35,10 @@ import { AuthenticationService } from './authentication/authentication.service';
     HttpClientModule,
     ReactiveFormsModule
   ],
-  providers: [AuthenticationService],
+  providers: [AuthenticationService,
+    { provide: LocationStrategy, useClass: HashLocationStrategy },
+  
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
